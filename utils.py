@@ -165,7 +165,7 @@ def analyze_data():
         inset.axis("off")
 
     plt.tight_layout()
-    plt.show()
+    plt.savefig(DATA_DIR / "data_analysis.png", dpi=300)
 
     # Print summary
     print(f"\nTotal training samples: {len(dataset)}")

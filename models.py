@@ -15,7 +15,7 @@ class ClassficationLoss(nn.Module):
 class FaceDiseaseCNN(nn.Module):
     '''A simple CNN architecture for face disease classification.'''
     
-    def __init__(self, in_channels=3, num_classes=5, block_channels=[64, 128, 256], channels_l0=64, stride=1, **kwargs):
+    def __init__(self, in_channels=3, num_classes=5, block_channels=[256, 256, 256, 256], channels_l0=64, stride=1, **kwargs):
         # Because we are working with 3-channel images, we set in_channels to 3 by default
         super(FaceDiseaseCNN, self).__init__()
         

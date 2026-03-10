@@ -1,0 +1,94 @@
+Data:
+https://www.kaggle.com/datasets/shubhamgoel27/dermnet
+https://www.kaggle.com/datasets/amellia/face-skin-disease/data
+
+Dataset class distribution:
+  Acne: 88 images (20.0%)
+  Actinic Keratosis: 88 images (20.0%)
+  Basal Cell Carcinoma: 88 images (20.0%)
+  Eczemaa: 88 images (20.0%)
+  Rosacea: 88 images (20.0%)
+
+run1:
+(epochs=50, batch_size=64, learning_rate=0.0001)
+block_channels=[128, 128, 128]
+Epoch  1 / 50: train_acc=0.2465 val_acc=0.2107
+Epoch 10 / 50: train_acc=0.4458 val_acc=0.4743
+Epoch 20 / 50: train_acc=0.5456 val_acc=0.5680
+Epoch 30 / 50: train_acc=0.5606 val_acc=0.5315
+Epoch 40 / 50: train_acc=0.5759 val_acc=0.5094
+Epoch 50 / 50: train_acc=0.5896 val_acc=0.5355
+
+run2:
+(epochs=70, batch_size=64, learning_rate=0.0001)
+block_channels=[128, 128, 128]
+Epoch  1 / 70: train_acc=0.3284 val_acc=0.1927
+Epoch 10 / 70: train_acc=0.4688 val_acc=0.4873
+Epoch 20 / 70: train_acc=0.4943 val_acc=0.5348
+Epoch 30 / 70: train_acc=0.5466 val_acc=0.4912
+Epoch 40 / 70: train_acc=0.5788 val_acc=0.5322
+Epoch 50 / 70: train_acc=0.5638 val_acc=0.5530
+Epoch 60 / 70: train_acc=0.5957 val_acc=0.5367
+Epoch 70 / 70: train_acc=0.6432 val_acc=0.5217
+
+run3:
+(epochs=50, batch_size=64, learning_rate=0.0001)
+block_channels=[256, 256, 256]
+FaceDiseaseCNN(
+  (cnn): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(11, 11), stride=(2, 2), padding=(5, 5))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): ReLU()
+    (6): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (7): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): ReLU()
+    (9): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (10): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (11): ReLU()
+  )
+  (gap): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=256, out_features=5, bias=True)
+)
+
+Epoch  1 / 50: train_acc=0.3205 val_acc=0.1927
+Epoch 10 / 50: train_acc=0.5080 val_acc=0.5250
+Epoch 20 / 50: train_acc=0.5341 val_acc=0.5543
+Epoch 30 / 50: train_acc=0.5730 val_acc=0.5328
+Epoch 40 / 50: train_acc=0.6126 val_acc=0.5563
+Epoch 50 / 50: train_acc=0.6467 val_acc=0.5992
+
+run4:
+(epochs=50, batch_size=64, learning_rate=0.0001)
+block_channels=[256, 256, 256, 256]
+
+FaceDiseaseCNN(
+  (cnn): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(11, 11), stride=(2, 2), padding=(5, 5))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): ReLU()
+    (6): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (7): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): ReLU()
+    (9): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (10): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (11): ReLU()
+    (12): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (13): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (14): ReLU()
+  )
+  (gap): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=256, out_features=5, bias=True)
+)
+
+Epoch  1 / 50: train_acc=0.3540 val_acc=0.1927
+Epoch 10 / 50: train_acc=0.5456 val_acc=0.5127
+Epoch 20 / 50: train_acc=0.5832 val_acc=0.5244
+Epoch 30 / 50: train_acc=0.6167 val_acc=0.5817
+Epoch 40 / 50: train_acc=0.6572 val_acc=0.5849
+Epoch 50 / 50: train_acc=0.6578 val_acc=0.5803
