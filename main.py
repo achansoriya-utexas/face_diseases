@@ -12,7 +12,7 @@ from models import FaceDiseaseCNN, ClassficationLoss
 
 
 
-def main(epochs=50, batch_size=64, learning_rate=0.0001):
+def train_model(epochs=50, batch_size=64, learning_rate=0.0001):
     if torch.cuda.is_available():
         device = torch.device("cuda")
     elif torch.backends.mps.is_available():
@@ -56,14 +56,15 @@ def main(epochs=50, batch_size=64, learning_rate=0.0001):
 
 def analyze_data():
     from utils import FaceDiseaseDataset, LABEL_NAMES
-    dataset = FaceDiseaseDataset(Path("data/train"))
-    class_counts = {label: 0 for label in LABEL_NAMES}
-    for _, label in dataset:
-        class_counts[LABEL_NAMES[label]] += 1
-    print("Dataset class distribution:")
-    for name, count in class_counts.items():
-        print(f"  {name}: {count} images ({count / len(dataset) * 100:.1f}%)")
+    for split in ("train", "testing"):
+        dataset = FaceDiseaseDataset(Path("data") / split)
+        class_counts = {label: 0 for label in LABEL_NAMES}
+        for _, label in dataset:
+            class_counts[LABEL_NAMES[label]] += 1
+        print(f"\n{split.upper()} dataset — {len(dataset)} total images:")
+        for name, count in class_counts.items():
+            print(f"  {name}: {count} images ({count / len(dataset) * 100:.1f}%)")
 
 if __name__ == "__main__":
     analyze_data()
-    #main()
+    train_model()
