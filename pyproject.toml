@@ -1,7 +1,7 @@
 [project]
 name = "face-diseases"
-version = "0.1.0"
-description = "Add your description here"
+version = "1.0.0"
+description = "Convolutional neural network for face diseases identification."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
